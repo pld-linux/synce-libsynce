@@ -1,0 +1,13 @@
+--- synce-libsynce-0.9.0/configure.ac.orig	2004-08-18 20:28:43.000000000 +0200
++++ synce-libsynce-0.9.0/configure.ac	2004-12-25 20:01:27.211937792 +0100
+@@ -111,8 +111,8 @@
+ 		AC_MSG_WARN([iconv.h not found (INCICONV=$INCICONV)])
+ 		])
+ 
+-AC_CHECK_LIB(socket,main)
+-AC_CHECK_LIB(nsl,main)
++AC_SEARCH_LIBS(socket,socket)
++AC_SEARCH_LIBS(gethostbyname,nsl)
+ 
+ AC_CONFIG_FILES( [lib/synce.h] )
+ 
