@@ -1,17 +1,25 @@
+#
+# Conditional build:
+%bcond_with	dbus	# build with dbus support
+#
 Summary:	Core SynCE library
 Summary(pl):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
-Version:	0.9.1
+Version:	0.9.2
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0: 	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	3fcffb776a5bedc23458152e5a650348
+# Source0-md5:	c75f68c28bcae07f2a369dd49a3c6767
 Patch0:		%{name}-nolibs.patch
+Patch1:		%{name}-noslang.patch
 URL:		http://synce.sourceforge.net/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
+# not sure which was OK, but doesn't build with 0.61
+%{?with_dbus:BuildRequires:	dbus-devel < 0.35}
 BuildRequires:	libtool
+BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -27,6 +35,7 @@ Summary:	Header files for libsynce library
 Summary(pl):	Pliki nag³ówkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
+%{?with_dbus:Requires:	dbus-devel}
 
 %description devel
 Header files for libsynce library.
@@ -47,8 +56,9 @@ Static libsynce library.
 Statyczna biblioteka libsynce.
 
 %prep
-%setup -q
+%setup -q -n libsynce-%{version}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -56,7 +66,8 @@ Statyczna biblioteka libsynce.
 %{__autoconf}
 %{__autoheader}
 %{__automake}
-%configure
+%configure \
+	%{?with_dbus:--enable-dbus}
 
 %{__make}
 
