@@ -5,14 +5,13 @@
 Summary:	Core SynCE library
 Summary(pl):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
-Version:	0.9.2
+Version:	0.9.3
 Release:	1
 License:	MIT
 Group:		Libraries
-Source0: 	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	c75f68c28bcae07f2a369dd49a3c6767
+Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
+# Source0-md5:	9b793d1ef241fa7fca6ca7832b3b4811
 Patch0:		%{name}-nolibs.patch
-Patch1:		%{name}-noslang.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
@@ -58,7 +57,6 @@ Statyczna biblioteka libsynce.
 %prep
 %setup -q -n libsynce-%{version}
 %patch0 -p1
-%patch1 -p1
 
 %build
 %{__libtoolize}
@@ -85,7 +83,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc LICENSE README TODO
+%doc README TODO
 %attr(755,root,root) %{_libdir}/libsynce.so.*.*.*
 %{_mandir}/man1/synce.1*
 
@@ -94,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/libsynce.so
 %{_libdir}/libsynce.la
 %{_includedir}/synce*.h
-%{_aclocaldir}/libsynce.m4
+%{_pkgconfigdir}/libsynce.pc
 
 %files static
 %defattr(644,root,root,755)
