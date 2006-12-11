@@ -13,7 +13,7 @@ Source0: 	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
 # Source0-md5:	c75f68c28bcae07f2a369dd49a3c6767
 Patch0:		%{name}-nolibs.patch
 Patch1:		%{name}-noslang.patch
-URL:		http://synce.sourceforge.net/
+URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
 # not sure which was OK, but doesn't build with 0.61
