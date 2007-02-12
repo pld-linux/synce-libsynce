@@ -3,7 +3,7 @@
 %bcond_with	dbus	# build with dbus support
 #
 Summary:	Core SynCE library
-Summary(pl.UTF-8):   Podstawowa biblioteka SynCE
+Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
 Version:	0.9.3
 Release:	1
@@ -31,7 +31,7 @@ najmniej) następujących części projektu: librapi2, dccmd.
 
 %package devel
 Summary:	Header files for libsynce library
-Summary(pl.UTF-8):   Pliki nagłówkowe biblioteki libsynce
+Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_dbus:Requires:	dbus-devel}
@@ -44,7 +44,7 @@ Pliki nagłówkowe biblioteki libsynce.
 
 %package static
 Summary:	Static libsynce library
-Summary(pl.UTF-8):   Statyczna biblioteka libsynce
+Summary(pl.UTF-8):	Statyczna biblioteka libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
