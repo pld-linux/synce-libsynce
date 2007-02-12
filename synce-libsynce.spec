@@ -3,7 +3,7 @@
 %bcond_with	dbus	# build with dbus support
 #
 Summary:	Core SynCE library
-Summary(pl):	Podstawowa biblioteka SynCE
+Summary(pl.UTF-8):   Podstawowa biblioteka SynCE
 Name:		synce-libsynce
 Version:	0.9.3
 Release:	1
@@ -25,13 +25,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 libsynce is part of the SynCE project. It's required for (at least)
 the following parts of the SynCE project: librapi2, dccmd.
 
-%description -l pl
-Biblioteka libsynce to czê¶æ projektu SynCE. Jest wymagana dla (co
-najmniej) nastêpuj±cych czê¶ci projektu: librapi2, dccmd.
+%description -l pl.UTF-8
+Biblioteka libsynce to czÄ™Å›Ä‡ projektu SynCE. Jest wymagana dla (co
+najmniej) nastÄ™pujÄ…cych czÄ™Å›ci projektu: librapi2, dccmd.
 
 %package devel
 Summary:	Header files for libsynce library
-Summary(pl):	Pliki nag³ówkowe biblioteki libsynce
+Summary(pl.UTF-8):   Pliki nagÅ‚Ã³wkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_dbus:Requires:	dbus-devel}
@@ -39,19 +39,19 @@ Requires:	%{name} = %{version}-%{release}
 %description devel
 Header files for libsynce library.
 
-%description devel -l pl
-Pliki nag³ówkowe biblioteki libsynce.
+%description devel -l pl.UTF-8
+Pliki nagÅ‚Ã³wkowe biblioteki libsynce.
 
 %package static
 Summary:	Static libsynce library
-Summary(pl):	Statyczna biblioteka libsynce
+Summary(pl.UTF-8):   Statyczna biblioteka libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 
 %description static
 Static libsynce library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Statyczna biblioteka libsynce.
 
 %prep
