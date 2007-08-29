@@ -1,12 +1,12 @@
 #
 # Conditional build:
-%bcond_with	dbus	# build with dbus support
+%bcond_without	dbus	# build without dbus support
 #
 Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
 Version:	0.10.0
-Release:	1
+Release:	2
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
@@ -15,8 +15,7 @@ Patch0:		%{name}-nolibs.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
-# not sure which was OK, but doesn't build with 0.61
-%{?with_dbus:BuildRequires:	dbus-devel < 0.35}
+%{?with_dbus:BuildRequires:	dbus-devel}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
