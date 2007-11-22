@@ -6,7 +6,7 @@ Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
 Version:	0.10.0
-Release:	2
+Release:	3
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
@@ -34,6 +34,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe biblioteki libsynce
 Group:		Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 %{?with_dbus:Requires:	dbus-devel}
+%{?with_dbus:Requires:	dbus-glib-devel}
 
 %description devel
 Header files for libsynce library.
