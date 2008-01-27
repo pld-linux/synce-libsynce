@@ -1,12 +1,12 @@
---- libsynce-0.10.0/configure.ac~	2007-08-29 02:48:23.945256622 +0300
-+++ libsynce-0.10.0/configure.ac	2007-08-29 02:49:43.167064670 +0300
-@@ -143,7 +143,8 @@
- 		AC_MSG_WARN([iconv.h not found (INCICONV=$INCICONV)])
- 		])
+--- libsynce-0.11/configure.ac~	2008-01-27 02:41:43.000000000 +0200
++++ libsynce-0.11/configure.ac	2008-01-27 02:42:48.187511951 +0200
+@@ -145,7 +145,8 @@
  
+ saved_CFLAGS="$CFLAGS"
+ CFLAGS=`echo $CFLAGS | sed 's/-Werror//'`
 -AC_CHECK_LIB(socket, socket, AC_CHECK_LIB(nsl, getpwnam), [])
 +AC_SEARCH_LIBS(socket, socket)
 +AC_SEARCH_LIBS(getpwnam, nsl)
  AC_CHECK_LIB(m, floor)
+ CFLAGS="$saved_CFLAGS"
  
- AC_CONFIG_FILES( [lib/synce.h] )
