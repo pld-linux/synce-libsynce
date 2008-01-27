@@ -5,12 +5,12 @@
 Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
-Version:	0.10.0
-Release:	4
+Version:	0.11
+Release:	1
 License:	MIT
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/synce/%{name}-%{version}.tar.gz
-# Source0-md5:	e46c72219bff559f4bb1615613671942
+Source0:	http://dl.sourceforge.net/synce/libsynce-%{version}.tar.gz
+# Source0-md5:	e742d779c66bc387f606fab9c28b6c40
 Patch0:		%{name}-nolibs.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
@@ -85,7 +85,8 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README TODO
 %attr(755,root,root) %{_libdir}/libsynce.so.*.*.*
-%{_mandir}/man1/synce.1*
+%attr(755,root,root) %ghost %{_libdir}/libsynce.so.0
+%{_mandir}/man7/synce.7*
 
 %files devel
 %defattr(644,root,root,755)
@@ -93,6 +94,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libsynce.la
 %{_includedir}/synce*.h
 %{_pkgconfigdir}/libsynce.pc
+%{_mandir}/man3/*
 
 %files static
 %defattr(644,root,root,755)
