@@ -5,12 +5,12 @@
 Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
-Version:	0.11.1
+Version:	0.12
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/libsynce-%{version}.tar.gz
-# Source0-md5:	4e9eca256ac355e01e4eb8cd47cbf777
+# Source0-md5:	fd473d3deceda7912af4427dede1736f
 Patch0:		%{name}-nolibs.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
