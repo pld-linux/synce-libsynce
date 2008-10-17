@@ -1,7 +1,14 @@
 #
 # Conditional build:
 %bcond_without	dbus	# build without dbus support
+%bcond_without	dccm	# build without dccm file support
+%bcond_without	hal	# build without hal support
+%bcond_without	odccm	# build without odccm support
 #
+%if !%{with dbus}
+%undefine with_odccm
+%undefine with_hal
+%endif
 Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
@@ -15,7 +22,8 @@ Patch0:		%{name}-nolibs.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake >= 1.4
-%{?with_dbus:BuildRequires:	dbus-devel}
+%{?with_dbus:BuildRequires:	dbus-glib-devel >= 0.60}
+%{?with_hal:BuildRequires:	hal-devel >= 0.5.8}
 BuildRequires:	libtool
 BuildRequires:	pkgconfig
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -65,7 +73,9 @@ Statyczna biblioteka libsynce.
 %{__autoheader}
 %{__automake}
 %configure \
-	%{?with_dbus:--enable-dbus}
+	%{!?with_dccm: --disable-dccm-file-support} \
+	%{!?with_hal: --disable-hal-support} \
+	%{!?with_odccm: --disable-odccm-support}
 
 %{__make}
 
@@ -83,7 +93,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README TODO
+%doc ChangeLog README TODO
 %attr(755,root,root) %{_libdir}/libsynce.so.*.*.*
 %attr(755,root,root) %ghost %{_libdir}/libsynce.so.0
 %{_mandir}/man7/synce.7*
