@@ -1,3 +1,6 @@
+# TODO:
+#	- descriptions and names for -connector-*
+#	- check connector-dccm requirement
 #
 # Conditional build:
 %bcond_without	dbus	# build without dbus support
@@ -13,7 +16,7 @@ Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
 Version:	0.12
-Release:	2
+Release:	2.9
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/libsynce-%{version}.tar.gz
@@ -62,6 +65,37 @@ Static libsynce library.
 %description static -l pl.UTF-8
 Statyczna biblioteka libsynce.
 
+%package -n synce-connector-hal
+Summary:	Virtual package which provides connection to a WinCE device
+Group:		Applications/System
+Provides:	synce-connector
+Requires:	%{name} = %{version}-%{release}
+Requires:	synce-hal
+
+%description -n synce-connector-hal
+Virtual package which provides connection to a WinCE device.
+
+%package -n synce-connector-odccm
+Summary:	Virtual package which provides connection to a WinCE device
+Group:		Applications/System
+Provides:	synce-connector
+Requires:	%{name} = %{version}-%{release}
+Requires:	synce-odccm
+
+%description -n synce-connector-odccm
+Virtual package which provides connection to a WinCE device.
+
+%package -n synce-connector-dccm
+Summary:	Virtual package which provides connection to a WinCE device
+Group:		Applications/System
+Provides:	synce-connector
+Requires:	%{name} = %{version}-%{release}
+# check what is actually required
+Requires:	synce-vdccm
+
+%description -n synce-connector-dccm
+Virtual package which provides connection to a WinCE device.
+
 %prep
 %setup -q -n libsynce-%{version}
 %patch0 -p1
@@ -109,3 +143,18 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/libsynce.a
+
+%if %{with hal}
+%files -n synce-connector-hal
+%defattr(644,root,root,755)
+%endif
+
+%if %{with odccm}
+%files -n synce-connector-odccm
+%defattr(644,root,root,755)
+%endif
+
+%if %{with dccm}
+%files -n synce-connector-dccm
+%defattr(644,root,root,755)
+%endif
