@@ -7,20 +7,20 @@
 %bcond_without	dccm	# build without dccm file support
 %bcond_without	hal	# build without hal support
 %bcond_without	odccm	# build without odccm support
-#
-%if !%{with dbus}
+
+%if %{without dbus}
 %undefine with_odccm
 %undefine with_hal
 %endif
 Summary:	Core SynCE library
 Summary(pl.UTF-8):	Podstawowa biblioteka SynCE
 Name:		synce-libsynce
-Version:	0.15
+Version:	0.15.1
 Release:	1
 License:	MIT
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/synce/libsynce-%{version}.tar.gz
-# Source0-md5:	073c51ed33c0259e8be4bf5ea82dbe99
+# Source0-md5:	eaddc88c5f0027e89c6f0fffec34def2
 Patch0:		%{name}-nolibs.patch
 URL:		http://www.synce.org/
 BuildRequires:	autoconf >= 2.50
