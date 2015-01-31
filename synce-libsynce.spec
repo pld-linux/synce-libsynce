@@ -1,3 +1,4 @@
+# NOTE: for versions >= 0.16 see synce-core.spec
 #
 # Conditional build:
 %bcond_without	dbus	# build without dbus support
