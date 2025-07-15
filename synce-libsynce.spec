@@ -68,7 +68,7 @@ Statyczna biblioteka libsynce.
 
 %prep
 %setup -q -n libsynce-%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %{__libtoolize}
